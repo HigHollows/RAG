@@ -1,0 +1,9 @@
+{
+  "id": "graphrag-studio",
+  "name": "GraphRAG Studio",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Interrogez votre graphe de connaissances (GraphRAG Studio) depuis Obsidian : questions sourcées et entités de la note courante.",
+  "author": "GraphRAG Studio",
+  "isDesktopOnly": true
+}

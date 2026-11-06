@@ -1,0 +1,6 @@
+node_modules/
+dist/
+*.exe
+*.blockmap
+.claude/
+tests/fixtures/vault_test/.obsidian/

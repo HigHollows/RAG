@@ -1,0 +1,67 @@
+{
+  "name": "graphrag-studio",
+  "productName": "GraphRAG Studio",
+  "version": "1.0.0",
+  "description": "Graphe de connaissances et recherche sourcée sur vos notes Obsidian",
+  "main": "src/main.js",
+  "author": "GraphRAG Studio",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test tests/parser.test.js tests/pipeline.test.js tests/ocr.test.js",
+    "icon": "node build/make-icon.js",
+    "dist": "electron-builder --win"
+  },
+  "build": {
+    "appId": "local.graphrag.studio",
+    "productName": "GraphRAG Studio",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "!src/ocr-data/**",
+      "build/icon.png",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "icon": "build/icon.png"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "perMachine": false,
+      "artifactName": "GraphRAG-Studio-Setup-${version}.${ext}",
+      "shortcutName": "GraphRAG Studio"
+    },
+    "portable": {
+      "artifactName": "GraphRAG-Studio-${version}-portable.${ext}"
+    },
+    "asar": true,
+    "extraResources": [
+      {
+        "from": "src/ocr-data",
+        "to": "ocr-data"
+      }
+    ],
+    "asarUnpack": [
+      "node_modules/**"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/inter": "^5.3.0",
+    "@napi-rs/canvas": "^1.1.0",
+    "@tesseract.js-data/eng": "^1.0.0",
+    "@tesseract.js-data/fra": "^1.0.0",
+    "tesseract.js": "^7.0.0",
+    "unpdf": "^2.1.0"
+  }
+}
